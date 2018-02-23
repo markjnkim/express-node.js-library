@@ -9,6 +9,13 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+// connect Express app with MongoDB @ mLab using mongoose
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb://markk:wdkym8ysNESW@ds245548.mlab.com:45548/local-library';
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
