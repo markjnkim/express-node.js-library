@@ -12,7 +12,9 @@ var catalog = require('./routes/catalog');
 var app = express();
 // connect Express app with MongoDB @ mLab using mongoose
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://markk:wdkym8ysNESW@ds245548.mlab.com:45548/local-library';
+
+// Get connection string from environment variable if set for production
+var mongoDB = process.env.MONGODB_URI || 'mongodb://markk:wdkym8ysNESW@ds245548.mlab.com:45548/local-library';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
