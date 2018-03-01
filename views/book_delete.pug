@@ -16,7 +16,10 @@ block content
       each instance in book_instances
         dt 
           a(href=instance.url) #{instance._id}
-        dd #{instance.book.summary}
+          p #{instance.status}
+          p #{instance.due_back_formatted}
+          p #{instance.}
+        dd #{instance.imprint}
 
   else
     p Do you really want to delete this Book?
