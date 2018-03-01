@@ -1,7 +1,7 @@
 var async = require('async');
 var Author = require('../models/author');
 var Book = require('../models/book');
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -20,10 +20,8 @@ exports.author_list = function(req, res, next) {
 };
 
 // Display detail page for specific Author.
-exports.author_detail = function(req, res) {
-//   res.send('Not IMPLEMENTED: Author Detail');
-// };
-    var id = mongoose.Types.ObjectId(req.params.id);
+exports.author_detail = function(req, res, next) {
+    // var id = mongoose.Types.ObjectId(req.params.id);
 
     async.parallel({
         author: function(callback) {

@@ -35,7 +35,7 @@ exports.bookinstance_detail = function(req, res, next) {
 
 
 // Display BookInstance create form on GET.
-exports.bookinstance_create_get = function(req, res) {
+exports.bookinstance_create_get = function(req, res, next) {
   Book.find({}, 'title')
     .exec(function(err, books) {
       if (err) {return next(err); }
