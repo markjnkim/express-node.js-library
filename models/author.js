@@ -36,13 +36,17 @@ AuthorSchema
   return date_birth + ' ~ ' + date_death;
 });
 
-// Virtual property for author's lifespan to populate update field format
+// Virtual property for author's dob to populate update field format
 AuthorSchema
-.virtual('lifespan_update')
+.virtual('d_o_b_formatted')
 .get(function () {
-  var date_birth = this.date_of_birth ? moment(this.date_of_birth).format('YYYY-MM-DD') : '';
-  var date_death = this.date_of_death ? moment(this.date_of_death).format('YYYY-MM-DD') : '';
-  return date_birth + ' ~ ' + date_death;
+  return this.date_of_birth ? moment(this.date_of_birth).format('YYYY-MM-DD') : '';
+});
+// Virtual Property for author's dod formatted
+AuthorSchema
+.virtual('d_o_d_formatted')
+.get(function () {
+  return this.date_of_death ? moment(this.date_of_death).format('YYYY-MM-DD') : '';
 });
 // Export model
 module.exports = mongoose.model('Author', AuthorSchema);

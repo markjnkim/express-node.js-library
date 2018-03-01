@@ -158,8 +158,7 @@ exports.author_update_get = function (req, res, next) {
             return next(err);
         }
         // Success.
-        res.render('author_form', { title: 'Update Author', author: author });
-
+        res.render('author_form', { title: 'Update Author', author: author, date_of_birth: author.d_o_b_formatted });
     });
 };
 
