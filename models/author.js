@@ -35,8 +35,18 @@ AuthorSchema
   var date_death = this.date_of_death ? moment(this.date_of_death).format('MMMM Do, YYYY') : '';
   return date_birth + ' ~ ' + date_death;
 });
-//return this.date_of_birth ? moment(this.date_of_birth).format('YYYY-MM-DD') : '' + ' to ' + this.date_of_death ? moment(this.date_of_death).format('YYYY-MM-DD') : '';
 
-
+// Virtual property for author's dob to populate update field format
+AuthorSchema
+.virtual('d_o_b_formatted')
+.get(function () {
+  return this.date_of_birth ? moment(this.date_of_birth).format('YYYY-MM-DD') : '';
+});
+// Virtual Property for author's dod formatted
+AuthorSchema
+.virtual('d_o_d_formatted')
+.get(function () {
+  return this.date_of_death ? moment(this.date_of_death).format('YYYY-MM-DD') : '';
+});
 // Export model
 module.exports = mongoose.model('Author', AuthorSchema);
