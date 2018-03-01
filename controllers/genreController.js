@@ -119,7 +119,7 @@ exports.genre_delete_get = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.genre==null) { // No results.
-          res.redirect('/catalog/genre');
+          res.redirect('/catalog/genres');
         }
         // Successful, so render.
         res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books } );
