@@ -158,7 +158,7 @@ exports.author_update_get = function (req, res, next) {
             return next(err);
         }
         // Success.
-        res.render('author_form', { title: 'Update Author', author: author, date_of_birth: author.d_o_b_formatted });
+        res.render('author_form', { title: 'Update Author', author: author });
     });
 };
 
@@ -205,7 +205,7 @@ exports.author_update_post = [
             // Data from form is valid. Update the record.
             Author.findByIdAndUpdate(req.params.id, author, {}, function (err, theauthor) {
                 if (err) { return next(err); }
-                // Successful - redirect to genre detail page.
+                // Successful - redirect to author detail page.
                 res.redirect(theauthor.url);
             });
         }
